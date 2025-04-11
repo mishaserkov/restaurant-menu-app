@@ -1,0 +1,23 @@
+body, h1, h2, h3, p {
+    margin: 0;
+    font-family: Smythe, serif;
+}
+
+.wrapper {
+    width: 600px;
+    margin: 0 auto;
+}
+
+/* Typography */
+
+h1 {
+    font-size: 39px;
+    line-height: 24px;
+    color: white;
+}
+
+.header {
+    background-image: url('images/bg-img.png');
+    background-size: cover;
+    /* padding: 46px; */
+}

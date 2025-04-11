@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS styles -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Smythe&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <h1>Jimmy’s Diner</h1>
+            <p>The best burgers and pizzas in town.</p>
+        </header>
+        <main>
+        <section class="menu-items">
+            <div>
+                <div>🍕</div>
+                <div>
+                    <p>Pizza</p>
+                    <p>pepperoni, mushroom, mozarella</p>
+                    <p>$14</p>
+                </div>
+                <button class="order-button">+</button>
+            </div>
+            <div>
+                <div>🍔</div>
+                <div>
+                    <p>Hamburger</p>
+                    <p>beef, cheese, lettuce</p>
+                    <p>$12</p>
+                </div>
+                <button class="order-button">+</button>
+            </div>
+            <div>
+                <div>🍺</div>
+                <div>
+                    <p>Beer</p>
+                    <p>grain, hops, yeast, water</p>
+                    <p>$12</p>
+                </div>
+                <button class="order-button">+</button>
+            </div>
+        </section>
+        <section class="order-info">
+            <h2></h2>
+            <div class="order-items"></div>
+            <div class="total-price">
+                <h2>Total price</h2>
+                <p id="total-price-usd">$26</p>
+            </div>
+            <button id="complete-order-btn">Complete order</button>
+        </section>
+        <div class="pop-up-overlay">
+            <div class="pop-up">
+                <h3>Enter card details</h3>
+                <input type="text"
+                name="name"
+                id="name"
+                placeholder="Enter your name"
+                required
+                >
+                <input type="text"
+                name="credit-card"
+                id="credit-car"
+                pattern="\d{16}"
+                placeholder="Enter your credit card number"
+                required
+                >
+                <input type="email"
+                name="email"
+                id="email"
+                placeholder="Enter your email"
+                required
+                >
+                <button id="pay-btn">Pay</button>
+            </div>
+            <div class="success-info">
+                <p>Thanks, James! Your order is on its way!</p> 
+            </div>
+        </div>
+        </main>
+    </div>
+    <script src="script.js" type="module"></script> 
+</body>
+</html>
