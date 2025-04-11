@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <!-- CSS styles -->
     <link rel="stylesheet" href="style.css">
-    <!-- Google font -->
+    <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Smythe&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="wrapper">
@@ -18,72 +19,99 @@
             <p>The best burgers and pizzas in town.</p>
         </header>
         <main>
-        <section class="menu-items">
-            <div>
-                <div>🍕</div>
-                <div>
-                    <p>Pizza</p>
-                    <p>pepperoni, mushroom, mozarella</p>
-                    <p>$14</p>
+            <section class="menu-items">
+                <div class="menu-item">
+                    <div class="menu-item-icon">🍕</div>
+                    <div class="menu-item-description">
+                        <h2>Pizza</h2>
+                        <p class="item-content">pepperoni, mushroom, mozarella</p>
+                        <p class="item-price">$14</p>
+                    </div>
+                    <button class="add-button">
+                        <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.83949 13.8068V0.011363H8.16903V13.8068H6.83949ZM0.612216 7.57955V6.23864H14.3963V7.57955H0.612216Z" fill="currentColor"/>
+                        </svg>
+                    </button>
                 </div>
-                <button class="order-button">+</button>
-            </div>
-            <div>
-                <div>🍔</div>
-                <div>
-                    <p>Hamburger</p>
-                    <p>beef, cheese, lettuce</p>
-                    <p>$12</p>
+                <div class="menu-item">
+                    <div class="menu-item-icon">🍔</div>
+                    <div  class="menu-item-description">
+                        <h2>Hamburger</h2>
+                        <p class="item-content">beef, cheese, lettuce</p>
+                        <p class="item-price">$12</p>
+                    </div>
+                    <button class="add-button">
+                        <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.83949 13.8068V0.011363H8.16903V13.8068H6.83949ZM0.612216 7.57955V6.23864H14.3963V7.57955H0.612216Z" fill="currentColor"/>
+                        </svg>
+                    </button>
                 </div>
-                <button class="order-button">+</button>
-            </div>
-            <div>
-                <div>🍺</div>
-                <div>
-                    <p>Beer</p>
-                    <p>grain, hops, yeast, water</p>
-                    <p>$12</p>
+                <div class="menu-item">
+                    <div class="menu-item-icon">🍺</div>
+                    <div class="menu-item-description">
+                        <h2>Beer</h2>
+                        <p class="item-content">grain, hops, yeast, water</p>
+                        <p class="item-price">$12</p>
+                    </div>
+                    <button class="add-button">
+                        <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.83949 13.8068V0.011363H8.16903V13.8068H6.83949ZM0.612216 7.57955V6.23864H14.3963V7.57955H0.612216Z" fill="currentColor"/>
+                        </svg>
+                    </button>
                 </div>
-                <button class="order-button">+</button>
-            </div>
-        </section>
-        <section class="order-info">
-            <h2></h2>
-            <div class="order-items"></div>
-            <div class="total-price">
-                <h2>Total price</h2>
-                <p id="total-price-usd">$26</p>
-            </div>
-            <button id="complete-order-btn">Complete order</button>
-        </section>
-        <div class="pop-up-overlay">
-            <div class="pop-up">
-                <h3>Enter card details</h3>
-                <input type="text"
-                name="name"
-                id="name"
-                placeholder="Enter your name"
-                required
-                >
-                <input type="text"
-                name="credit-card"
-                id="credit-car"
-                pattern="\d{16}"
-                placeholder="Enter your credit card number"
-                required
-                >
-                <input type="email"
-                name="email"
-                id="email"
-                placeholder="Enter your email"
-                required
-                >
-                <button id="pay-btn">Pay</button>
+            </section>
+            <section class="order-info">
+                <h2 class="order-info-heading">Your order</h2>
+                <div class="order-items">
+                    <div class="order-item">
+                        <h2>Pizza</h2>
+                        <button class="remove-btn" id="remove-btn">remove</button>
+                        <p class="item-price">$14</p>
+                    </div>
+                    <div class="order-item">
+                        <h2>Beer</h2>
+                        <button class="remove-btn" id="remove-btn">remove</button>
+                        <p class="item-price">$12</p>
+                    </div>
+                </div>
+                <div class="total-price">
+                    <h2>Total price</h2>
+                    <p class="item-price">$26</p>
+                </div>
+                <button class="action-btn" id="complete-order-btn">Complete order</button>
+            </section>
+            <div class="pop-up-overlay">
+                <div class="pop-up">
+                    <h3>Enter card details</h3>
+                    <button class="pop-up-close-btn">x</button>
+                    <form class="card-form">
+                        <input type="text"
+                        name="name"
+                        id="name"
+                        placeholder="Enter your name"
+                        required
+                        >
+                        <input type="text"
+                        name="credit-card"
+                        id="credit-car"
+                        pattern="\d{16}"
+                        placeholder="Enter your credit card number"
+                        required
+                        >
+                        <input type="text"
+                        name="cvv"
+                        id="cvv"
+                        placeholder="Enter CVV"
+                        pattern="\d{3}"
+                        required
+                        >
+                        <button class="action-btn" id="pay-btn">Pay</button>
+                    </form>
+                </div>
             </div>
             <div class="success-info">
                 <p>Thanks, James! Your order is on its way!</p> 
             </div>
-        </div>
         </main>
     </div>
     <script src="script.js" type="module"></script> 
