@@ -2,34 +2,89 @@ import menuArray from './data.js'
 
 const menuItems = document.getElementById("menu-items")
 const orderItems = document.getElementById("order-items")
+const totalPrice = document.getElementById("total-price")
+const popUpOverlay = document.getElementById("pop-up-overlay")
+const orderInfo = document.getElementById("order-info")
+const successInfo = document.getElementById("success-info")
+const completeOrderBtn = document.getElementById("complete-order-btn")
+const payBtn = document.getElementById("pay-btn")
+
+const orderItemsArray =  []
 
 renderMenuItems(menuArray)
 
 document.addEventListener("click", function(e) {
-    // Ищем ближайший элемент с атрибутом data-item
-    const button = e.target.closest("[data-item]");
-    if (button) {
-        // Ищем совпадение в массиве menuArray
-        const matchedItem = menuArray.find(item => item.name.toLowerCase() === button.dataset.item);
-
-
-        if (matchedItem) {
-            console.log(`Ты добавил в корзину ${matchedItem.name}!`);
+    const addButton = e.target.closest("[data-item]");
+    const removeButton = e.target.dataset.remove
+    if (addButton) {
+        const matchedMenuItem = menuArray.find(item => item.name.toLowerCase() === addButton.dataset.item);
+        if (matchedMenuItem) {
+            orderItemsArray.push(matchedMenuItem);
+            renderOrderItems() 
         }
+    } 
+    
+    if(removeButton){
+        const matchedOrderItem = orderItemsArray.find(item => item.name.toLowerCase() === removeButton);
+        deleteOrderedItem(matchedOrderItem)
+    } 
+    
+    if(e.target === completeOrderBtn){
+        popUpOverlay.style.display = "flex"
+    }
+
+    if(e.target === payBtn) {
+        e.preventDefault()
+        popUpOverlay.style.display = "none"
+        orderInfo.style.display = "none"
+        successInfo.style.display = "block"
+        orderItemsArray.splice(0, orderItemsArray.length);
     }
 });
 
-// document.addEventListener("click", function(e){
+function renderOrderItems(){
 
-//     if(e.target.dataset.item) {
-//         // Ищем совпадение в массиве menuArray
-//         const matchedItem = menuArray.find(item => item.name.toLowerCase() === e.target.dataset.item);
+    if(orderItemsArray.length){
+        orderInfo.style.display = "block"
+        successInfo.style.display = "none"
 
-//         if (matchedItem) {
-//             console.log(`Ты добавил в корзину ${matchedItem.name}!`);
-//         }
-//     }
-// })
+        let renderedOrderItems = ''
+    
+        orderItemsArray.forEach(function(item){
+            renderedOrderItems += `
+            <div class="order-item">
+               <h2>${item.name}</h2>
+               <button class="remove-btn" id="remove-btn" data-remove="${item.name.toLowerCase()}">remove</button>
+               <p class="item-price">$${item.price}</p>
+           </div>
+           `
+        })
+        orderItems.innerHTML = renderedOrderItems
+        calculateTotalPrice()
+        console.log(orderItemsArray)
+    } else {
+        orderInfo.style.display = "none"
+    }
+}
+
+function calculateTotalPrice(){
+    totalPrice.textContent = `$${
+        orderItemsArray.reduce(function(total, item) {
+            return total + item.price
+        }, 0)
+    }`
+}
+
+function deleteOrderedItem(orderedItem){
+    const index = orderItemsArray.findIndex(item => item.name === orderedItem.name)
+    
+    if(index !== -1) {
+        orderItemsArray.splice(index, 1)
+    }
+
+    console.log(orderItemsArray)
+    renderOrderItems()
+}
 
 function renderMenuItems(array) {
 
@@ -50,7 +105,4 @@ function renderMenuItems(array) {
         </div>
         `
     })
-    console.log("Рендеринг успешно завершен")
 }
-
-console.log(orderItems)

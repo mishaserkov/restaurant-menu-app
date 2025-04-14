@@ -112,7 +112,7 @@ p {
 
 .order-info {
     margin: 45px 46px 0;
-    /* display: none; */
+    display: none;
 }
 
 .order-info-heading {
@@ -239,7 +239,7 @@ p {
     text-align: center;
     background-color: #ECFDF5;
     margin: 45px 46px 25px;
-    /* display: none; */
+    display: none;
 }
 
 .success-info p {
