@@ -217,20 +217,20 @@ p {
     right: 24px;
 }
 
-.card-form {
+.payment-form {
     display: flex;
     flex-direction: column;
     gap: 23px;
 }
 
-.card-form input {
+.payment-form input {
     font-family: Verdana, sans-serif;
     font-size: 20px;
     line-height: 31px;
     padding: 20px 30px 20px;
 }
 
-.card-form .action-btn {
+.payment-form .action-btn {
     margin: 46px 0 0;
 }
 

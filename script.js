@@ -6,6 +6,7 @@ const totalPrice = document.getElementById("total-price")
 const popUpOverlay = document.getElementById("pop-up-overlay")
 const orderInfo = document.getElementById("order-info")
 const successInfo = document.getElementById("success-info")
+const paymentForm = document.getElementById("payment-form")
 const completeOrderBtn = document.getElementById("complete-order-btn")
 const payBtn = document.getElementById("pay-btn")
 
@@ -35,15 +36,11 @@ document.addEventListener("click", function(e) {
 
     if(e.target === payBtn) {
         e.preventDefault()
-        popUpOverlay.style.display = "none"
-        orderInfo.style.display = "none"
-        successInfo.style.display = "block"
-        orderItemsArray.splice(0, orderItemsArray.length);
+        renderSuccessMessage()
     }
 });
 
 function renderOrderItems(){
-
     if(orderItemsArray.length){
         orderInfo.style.display = "block"
         successInfo.style.display = "none"
@@ -87,7 +84,6 @@ function deleteOrderedItem(orderedItem){
 }
 
 function renderMenuItems(array) {
-
     array.forEach(function(item){
         menuItems.innerHTML += `
          <div class="menu-item">
@@ -105,4 +101,18 @@ function renderMenuItems(array) {
         </div>
         `
     })
+}
+
+function renderSuccessMessage(){
+    if (!paymentForm.checkValidity()) {
+        paymentForm.reportValidity(); // покажет встроенные браузерные ошибки
+        return; // отменим отправку
+      }
+    popUpOverlay.style.display = "none"
+    orderInfo.style.display = "none"
+    successInfo.style.display = "block"
+    successInfo.innerHTML = `
+    <p>Thanks, ${paymentForm.name.value}! Your order is on its way!</p>`
+    orderItemsArray.splice(0, orderItemsArray.length)
+    paymentForm.reset()
 }
